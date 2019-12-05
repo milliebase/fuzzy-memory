@@ -79,7 +79,7 @@ header p {
   transform-style: preserve-3d;
 }
 
-/*GAME__LEVEL-- DECIDES WHICH WIDTH*/
+/*CARD--level -- DECIDES WHICH WIDTH*/
 .card--hard {
   width: 16%; /*WIDTH IS (100-20)/number of cards in row*/
 }
@@ -124,8 +124,8 @@ header p {
   padding-top: 2%;
 }
 
-/**SETTINGS__LEVELS**/
-.levels {
+/*****LEVELS********/
+.level {
   width: 100%;
   display: flex;
   align-items: center;
@@ -133,12 +133,12 @@ header p {
   flex-direction: column;
 }
 
-.levels h2 {
+.level h2 {
   font-size: 18px;
 }
 
-/**LEVELS_HOLDER**/
-.levels__holder {
+/**LEVEL_HOLDER**/
+.level__holder {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -146,8 +146,8 @@ header p {
   justify-content: space-around;
 }
 
-/**LEVELS_BUTTON**/
-.levels__button {
+/**LEVEL_BUTTONS**/
+.level__buttons {
   width: 100px;
   color: white;
   font-weight: 800;
@@ -158,19 +158,19 @@ header p {
   margin-bottom: 2%;
 }
 
-.levels__button--easy {
+.level__button--easy {
   background-color: rgb(190, 200, 153);
 }
 
-.levels__button--medium {
+.level__button--medium {
   background-color: rgb(111, 123, 185);
 }
 
-.levels__button--hard {
+.level__button--hard {
   background-color: rgb(28, 4, 31);
 }
 
-/**PLAY-BUTTON**/
+/******PLAY-BUTTON****/
 .play {
   width: 40%;
   padding: 5%;
