@@ -3,19 +3,10 @@
  * EASY - 3 rows 4 cards
  */
 
-const gameBoard = document.querySelector(".game__board");
-const levelButtons = document.querySelectorAll(".level__buttons");
-
-////////GENERATE GAME-BOARD///////////////
-//Function to get random number
-// const getRandomInt = function(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// };
-
-//Eventlisteners for game
+////////////////////GAMEPLAY///////////////////////
+/**
+ * Function with eventlisteners for playing the game
+ */
 const playGame = function() {
   const cards = document.querySelectorAll(".card");
 
@@ -28,17 +19,39 @@ const playGame = function() {
   });
 };
 
-//Function to create cards to rows.
+//////////////////GENERATE GAME-BOARD////////////////////
+const gameBoard = document.querySelector(".game__board");
+const levelButtons = document.querySelectorAll(".level__buttons");
+//Function to get random number
+// const getRandomInt = function(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// };
+
+const doubleDeck = [...deck, ...deck];
+
+const shuffle = function(deck) {
+  return deck.sort(() => Math.random() - 0.5);
+};
+
+let shuffledDeck = shuffle(doubleDeck);
+
+/*
+ * Function to create cards to rows.
+ */
 const generateCards = function() {
   let name;
   let image;
 
-  deck.forEach(item => {
+  const card = document.createElement("div");
+
+  shuffledDeck.forEach(item => {
     name = item["name"];
     image = item["image"];
   });
 
-  const card = document.createElement("div");
   card.classList.add("card");
   card.setAttribute("data-name", `${name}`);
 
@@ -52,15 +65,25 @@ const generateCards = function() {
   return card;
 };
 
-//Function to create rows in game board.
+/**
+ * Function to create rows in game board
+ *
+ * @return {string} row
+ */
 const createRows = function() {
   const row = document.createElement("div");
   row.classList.add("game__row");
-
   return row;
 };
 
-//Function to generate the cards depending on level
+/**
+ * Function to generate rows with cards depending on chosen level
+ *
+ * @param {int} rows
+ * @param {string} rowClass
+ * @param {int} cards
+ * @param {string} cardClass
+ */
 const generateLevel = function(rows, rowClass, cards, cardClass) {
   for (let i = 0; i < rows; i++) {
     let row = createRows();
