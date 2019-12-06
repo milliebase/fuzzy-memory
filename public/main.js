@@ -13,7 +13,6 @@ const playGame = function() {
   //Eventlistener for flipping card
   cards.forEach(card => {
     card.addEventListener("click", event => {
-      console.log("hi");
       event.currentTarget.classList.add("card--flip");
     });
   });
@@ -22,47 +21,23 @@ const playGame = function() {
 //////////////////GENERATE GAME-BOARD////////////////////
 const gameBoard = document.querySelector(".game__board");
 const levelButtons = document.querySelectorAll(".level__buttons");
-//Function to get random number
-// const getRandomInt = function(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
+let doubleDeck = [...deck, ...deck];
 
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// };
+/**
+ *Function which shuffles deck
 
-const doubleDeck = [...deck, ...deck];
-
+ * @param {array} deck
+ */
 const shuffle = function(deck) {
   return deck.sort(() => Math.random() - 0.5);
 };
 
-let shuffledDeck = shuffle(doubleDeck);
+const generateDeck = function(number) {
+  let newDeck = deck.slice(0, number);
+  doubleDeck = [...newDeck, ...newDeck];
+  shuffle(doubleDeck);
 
-/*
- * Function to create cards to rows.
- */
-const generateCards = function() {
-  let name;
-  let image;
-
-  const card = document.createElement("div");
-
-  shuffledDeck.forEach(item => {
-    name = item["name"];
-    image = item["image"];
-  });
-
-  card.classList.add("card");
-  card.setAttribute("data-name", `${name}`);
-
-  const template = `
-    <div class="card--front"></div>
-	  <img class="card--back" src="${image}" alt="${name}"/>
-  `;
-
-  card.innerHTML = template;
-
-  return card;
+  return doubleDeck;
 };
 
 /**
@@ -76,6 +51,29 @@ const createRows = function() {
   return row;
 };
 
+/*
+ * Function to create cards to rows.
+ */
+const generateCards = function(name, image) {
+  const card = document.createElement("div");
+
+  card.classList.add("card");
+
+  card.setAttribute("data-name", `${name}`);
+
+  image = "mulan.jpg";
+  name = "mulan";
+
+  const template = `
+    <div class="card--front"></div>
+	  <img class="card--back" src="images/${image}" alt="${name}"/>
+  `;
+
+  card.innerHTML = template;
+
+  return card;
+};
+
 /**
  * Function to generate rows with cards depending on chosen level
  *
@@ -84,7 +82,9 @@ const createRows = function() {
  * @param {int} cards
  * @param {string} cardClass
  */
-const generateLevel = function(rows, rowClass, cards, cardClass) {
+const generateLevel = function(rows, rowClass, cards, cardClass, gameDeck) {
+  console.log(gameDeck);
+
   for (let i = 0; i < rows; i++) {
     let row = createRows();
 
@@ -97,7 +97,6 @@ const generateLevel = function(rows, rowClass, cards, cardClass) {
       card.classList.add(cardClass);
       row.appendChild(card);
     }
-
     gameBoard.appendChild(row);
   }
 };
@@ -106,19 +105,25 @@ const generateLevel = function(rows, rowClass, cards, cardClass) {
 levelButtons.forEach(levelButton => {
   levelButton.addEventListener("click", event => {
     let level = event.currentTarget.textContent;
+    let gameDeck;
+
+    shuffle(deck);
 
     gameBoard.innerHTML = "";
 
     if (level === "easy") {
-      generateLevel(3, "game__row--other", 4, "card--other");
+      gameDeck = generateDeck(6);
+      generateLevel(3, "game__row--other", 4, "card--other", gameDeck);
     }
 
     if (level === "medium") {
-      generateLevel(4, "game__row--other", 4, "card--other");
+      gameDeck = generateDeck(8);
+      generateLevel(4, "game__row--other", 4, "card--other", gameDeck);
     }
 
     if (level === "hard") {
-      generateLevel(4, "", 5, "card--hard");
+      gameDeck = generateDeck(10);
+      generateLevel(4, "", 5, "card--hard", gameDeck);
     }
     playGame();
   });
