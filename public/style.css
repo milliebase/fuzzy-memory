@@ -47,26 +47,13 @@ header p {
   height: 100%;
   padding: 3%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-}
-
-.game__row {
-  width: 100%;
-  height: 27%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.game__row--other {
-  height: 30%;
 }
 
 /**GAME__CARD**/
 .card {
-  height: 85%;
   position: relative;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -79,13 +66,20 @@ header p {
   transform-style: preserve-3d;
 }
 
-/*CARD--level -- DECIDES WHICH WIDTH*/
+/*CARD--*level* -- DECIDES WHICH WIDTH*/
 .card--hard {
-  width: 16%; /*WIDTH IS (100-20)/number of cards in row*/
+  height: 23%;
+  width: 17%; /*WIDTH IS (100-20)/number of cards in row*/
 }
 
-.card--other {
-  width: 18%;
+.card--medium {
+  height: 23%;
+  width: 21%;
+}
+
+.card--easy {
+  height: 30%;
+  width: 22%;
 }
 
 .card--front,
@@ -106,6 +100,7 @@ header p {
 }
 
 .card--back {
+  object-fit: cover;
   position: absolute;
   transform: rotateY(180deg);
 }

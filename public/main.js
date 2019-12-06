@@ -13,7 +13,9 @@ const playGame = function() {
   //Eventlistener for flipping card
   cards.forEach(card => {
     card.addEventListener("click", event => {
-      event.currentTarget.classList.add("card--flip");
+      let chosenCard = event.currentTarget;
+
+      chosenCard.classList.add("card--flip");
     });
   });
 };
@@ -40,17 +42,6 @@ const generateDeck = function(number) {
   return doubleDeck;
 };
 
-/**
- * Function to create rows in game board
- *
- * @return {string} row
- */
-const createRows = function() {
-  const row = document.createElement("div");
-  row.classList.add("game__row");
-  return row;
-};
-
 /*
  * Function to create cards to rows.
  */
@@ -60,9 +51,6 @@ const generateCards = function(name, image) {
   card.classList.add("card");
 
   card.setAttribute("data-name", `${name}`);
-
-  image = "mulan.jpg";
-  name = "mulan";
 
   const template = `
     <div class="card--front"></div>
@@ -82,23 +70,16 @@ const generateCards = function(name, image) {
  * @param {int} cards
  * @param {string} cardClass
  */
-const generateLevel = function(rows, rowClass, cards, cardClass, gameDeck) {
-  console.log(gameDeck);
+const generateLevel = function(cardLevelClass, gameDeck) {
+  let card;
 
-  for (let i = 0; i < rows; i++) {
-    let row = createRows();
-
-    if (!rowClass === "") {
-      row.classList.add(rowClass);
-    }
-
-    for (let j = 0; j < cards; j++) {
-      let card = generateCards();
-      card.classList.add(cardClass);
-      row.appendChild(card);
-    }
-    gameBoard.appendChild(row);
-  }
+  gameDeck.forEach(item => {
+    let name = item.name;
+    let image = item.image;
+    card = generateCards(name, image);
+    card.classList.add(cardLevelClass);
+    gameBoard.appendChild(card);
+  });
 };
 
 //Eventlistener for each game level
@@ -113,17 +94,17 @@ levelButtons.forEach(levelButton => {
 
     if (level === "easy") {
       gameDeck = generateDeck(6);
-      generateLevel(3, "game__row--other", 4, "card--other", gameDeck);
+      generateLevel("card--easy", gameDeck);
     }
 
     if (level === "medium") {
       gameDeck = generateDeck(8);
-      generateLevel(4, "game__row--other", 4, "card--other", gameDeck);
+      generateLevel("card--medium", gameDeck);
     }
 
     if (level === "hard") {
       gameDeck = generateDeck(10);
-      generateLevel(4, "", 5, "card--hard", gameDeck);
+      generateLevel("card--hard", gameDeck);
     }
     playGame();
   });
