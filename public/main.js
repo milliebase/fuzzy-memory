@@ -1,7 +1,23 @@
 ////////////////////GAMEPLAY///////////////////////
 const gameBoard = document.querySelector(".game__board");
+const overlay = document.querySelector(".overlay");
+const overlayTextH2 = document.querySelector(".overlay__text h2");
+const overlayTextP = document.querySelector(".overlay__text p");
+const replay = document.querySelector(".replay");
 let chosenCards = [];
 
+const toggleOverlay = function() {
+  overlay.classList.toggle("overlay--hidden");
+  setTimeout(() => {
+    overlay.classList.toggle("overlay--placement");
+  }, 500);
+};
+
+/**
+ * Checks if the chosen cards are a match or not.
+ *
+ * @param {array} chosenCards
+ */
 const isMatch = function(chosenCards) {
   let firstCard = chosenCards[0].dataset.name;
   let secondCard = chosenCards[1].dataset.name;
@@ -12,6 +28,8 @@ const isMatch = function(chosenCards) {
         chosenCard.classList.remove("card--flip");
       }, 1000);
     });
+  } else {
+    return true;
   }
 };
 
@@ -20,6 +38,7 @@ const isMatch = function(chosenCards) {
  */
 const playGame = function() {
   const cards = document.querySelectorAll(".card");
+  let availableMatches = cards.length / 2;
 
   //Eventlistener for flipping card
   cards.forEach(card => {
@@ -30,11 +49,25 @@ const playGame = function() {
 
       if (chosenCards.length === 2) {
         gameBoard.classList.add("game__board--locked");
-        isMatch(chosenCards);
+
+        let ifMatch = isMatch(chosenCards);
+
+        if (ifMatch) {
+          availableMatches--;
+        }
+
+        if (availableMatches === 0) {
+          overlayTextH2.textContent = "You won!";
+          overlayTextP.textContent = "";
+          replay.classList.remove("replay--hidden");
+          toggleOverlay();
+        }
+
         chosenCards = [];
+
         setTimeout(() => {
           gameBoard.classList.remove("game__board--locked");
-        }, 1000);
+        }, 800);
       }
     });
   });
@@ -55,7 +88,7 @@ const shuffle = function(deck) {
 /**
  * Function which creates a new array with duplicates from the original deck.
  *
- * @param {int} number
+ * @param {int} numOfCards
  */
 const generateDeck = function(numOfCards) {
   let newDeck = deck.slice(0, numOfCards);
@@ -106,30 +139,48 @@ const generateLevel = function(cardLevelClass, gameDeck) {
   });
 };
 
+const checkChosenLevel = function(level) {
+  gameBoard.innerHTML = "";
+
+  shuffle(deck);
+
+  if (level === "easy") {
+    gameDeck = generateDeck(6);
+    generateLevel("card--easy", gameDeck);
+    level = "easy";
+  }
+
+  if (level === "medium") {
+    gameDeck = generateDeck(8);
+    generateLevel("card--medium", gameDeck);
+    level = "medium";
+  }
+
+  if (level === "hard") {
+    gameDeck = generateDeck(10);
+    generateLevel("card--hard", gameDeck);
+    level = "hard";
+  }
+
+  if (!overlay.classList.contains("overlay--hidden")) {
+    toggleOverlay();
+  }
+
+  playGame();
+};
+
+let level;
+let gameDeck;
+
 //Eventlistener for each game level
 levelButtons.forEach(levelButton => {
   levelButton.addEventListener("click", event => {
-    shuffle(deck);
-    gameBoard.innerHTML = "";
-
-    let level = event.currentTarget.textContent;
-    let gameDeck;
-
-    if (level === "easy") {
-      gameDeck = generateDeck(6);
-      generateLevel("card--easy", gameDeck);
-    }
-
-    if (level === "medium") {
-      gameDeck = generateDeck(8);
-      generateLevel("card--medium", gameDeck);
-    }
-
-    if (level === "hard") {
-      gameDeck = generateDeck(10);
-      generateLevel("card--hard", gameDeck);
-    }
-
-    playGame();
+    level = event.currentTarget.textContent;
+    checkChosenLevel(level);
   });
+});
+
+//Eventlistener for replay button
+replay.addEventListener("click", () => {
+  checkChosenLevel(level);
 });
