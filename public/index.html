@@ -15,12 +15,23 @@
   <body>
     <div class="container">
       <header>
-        <h1>Play Memory</h1>
+        <h1>Fuzzy Memory</h1>
         <p>with Mulan and her friends</p>
       </header>
 
       <div class="game">
-        <section class="game__board"></section>
+        <section class="game__holder">
+            <div class="game__board"></div>
+
+            <div class="overlay overlay--welcome">
+              <div class="overlay__text">
+                <h2>Welcome</h2>
+                <p>Choose level to play</p>
+              </div>
+              <button class="replay replay--hidden">Replay</button>
+            </div>
+        </section>
+
 
         <section class="settings">
           <div class="level">
@@ -31,8 +42,6 @@
               <button class="level__buttons level__button--hard">hard</button>
             </div><!--levels__holder-->
           </div><!--/levels-->
-
-          <button class="play">Play!</button>
         </section><!--/settings-->
       </div><!--/game-->
     </div><!--/container-->
