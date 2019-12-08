@@ -248,18 +248,22 @@ header p {
 }
 
 .player__holder,
-.level__holder {
-  width: 100%;
+.level__holder,
+.stats__holder {
+  margin-top: 6%;
   display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.player__holder,
+.level__holder {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 
 .stats__holder {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
   color: white;
 }
 
