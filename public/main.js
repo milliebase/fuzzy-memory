@@ -49,28 +49,28 @@ const toggleOverlay = function() {
  */
 const handleTurns = function(wasItAMatch) {
   if (numOfPlayers === "1" && currentTurn === "first player") {
-    setTimeout(() => {
-      gameBoard.classList.remove("game__board--one");
-      gameBoard.classList.add("game__board--two");
-    }, 1000);
-
-    currentTurn = "second player";
-
     if (wasItAMatch) {
       firstPlayerPoints++;
       pointsFirstPlayer.textContent = firstPlayerPoints;
+    } else {
+      setTimeout(() => {
+        gameBoard.classList.remove("game__board--one");
+        gameBoard.classList.add("game__board--two");
+      }, 1000);
+
+      currentTurn = "second player";
     }
   } else if (currentTurn === "second player") {
-    setTimeout(() => {
-      gameBoard.classList.remove("game__board--two");
-      gameBoard.classList.add("game__board--one");
-    }, 1000);
-
-    currentTurn = "first player";
-
     if (wasItAMatch) {
       secondPlayerPoints++;
       pointsSecondPlayer.textContent = secondPlayerPoints;
+    } else {
+      setTimeout(() => {
+        gameBoard.classList.remove("game__board--two");
+        gameBoard.classList.add("game__board--one");
+      }, 1000);
+
+      currentTurn = "first player";
     }
   }
 };
