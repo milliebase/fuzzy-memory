@@ -1,10 +1,12 @@
 body {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  font-family: "Dosis", sans-serif;'
 }
 
 .container {
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -38,12 +40,13 @@ header p {
   width: 100%;
   height: 85%;
   display: flex;
+  flex-direction: column;
   font-family: "Dosis", sans-serif;
   text-transform: uppercase;
 }
 
 .game__holder {
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 
@@ -65,9 +68,9 @@ header p {
 
 .overlay {
   height: 85%;
-  width: inherit;
+  width: 70%;
   position: fixed;
-  top: 15%;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,8 +99,10 @@ header p {
 }
 
 .overlay__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 15%;
-  text-align: center;
 }
 
 .overlay__text h2 {
@@ -108,8 +113,10 @@ header p {
 
 .overlay__text p {
   margin: 0;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 700;
+  width: 80%;
+  text-align: center;
 }
 
 /******PLAY-BUTTON****/
@@ -189,15 +196,21 @@ header p {
   width: 30%;
   height: 100%;
   color: rgb(79, 35, 86);
+  text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding-top: 2%;
+  padding: 2% 0;
 }
 
-/*****LEVELS********/
-.level {
+.settings h2 {
+  font-size: 18px;
+}
+
+.player,
+.level ,
+.stats {
   width: 100%;
   display: flex;
   align-items: center;
@@ -205,11 +218,8 @@ header p {
   flex-direction: column;
 }
 
-.level h2 {
-  font-size: 18px;
-}
-
-/**LEVEL_HOLDER**/
+/**BUTTON_HOLDER**/
+.player__holder,
 .level__holder {
   width: 100%;
   display: flex;
@@ -218,7 +228,13 @@ header p {
   justify-content: space-around;
 }
 
-/**LEVEL_BUTTONS**/
+.stats__holder {
+  width: 100%;
+  padding: 0 15%;
+}
+
+/**BUTTONS**/
+.player__buttons,
 .level__buttons {
   width: 100px;
   color: white;
@@ -230,14 +246,28 @@ header p {
   margin-bottom: 2%;
 }
 
-.level__button--easy {
-  background-color: rgb(190, 200, 153);
+.player__buttons {
+  background-color: rgb(127, 139, 199);
 }
 
-.level__button--medium {
-  background-color: rgb(111, 123, 185);
+.player__buttons--active {
+  background-color: rgb(21, 27, 56);
 }
 
+.level__buttons {
+  background-color: rgb(193, 206, 149);
+}
+
+.level__buttons--active {
+  background-color: rgb(86, 94, 58);
+}
+
+/*******PLAYER*******/
+.player__button--one {
+  background-color: rgb(143, 143, 143);
+}
+
+/*
 .level__button--hard {
   background-color: rgb(28, 4, 31);
-}
+} */
