@@ -7,44 +7,58 @@
     <title>Fuzzy memory</title>
     <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Caveat|Dosis:200,300,400,500,600,700,800|Rouge+Script&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Dosis:200,300,400,500,600,700,800|Rouge+Script&display=swap" rel="stylesheet"/>
   </head>
   <body>
     <div class="container">
       <header>
         <h1>Fuzzy Memory</h1>
-        <p>with Mulan and her friends</p>
+        <p>Disney edition</p>
       </header>
 
       <div class="game">
         <section class="game__holder">
-            <div class="game__board"></div>
+          <div class="game__board"></div>
 
-            <div class="overlay overlay--welcome">
-              <div class="overlay__text">
-                <h2>Welcome</h2>
-                <p>Choose level to play</p>
-              </div>
-              <button class="replay replay--hidden">Replay</button>
+          <div class="overlay overlay--welcome">
+            <div class="overlay__text">
+              <h2>Welcome</h2>
+              <p>Choose level</p>
             </div>
+            <button class="replay replay--hidden">Replay</button>
+          </div>
         </section>
-
-
-        <section class="settings">
-          <div class="level">
-            <h2>Choose level</h2>
-            <div class="level__holder">
-              <button class="level__buttons level__button--easy">easy</button>
-              <button class="level__buttons level__button--medium">medium</button>
-              <button class="level__buttons level__button--hard">hard</button>
-            </div><!--levels__holder-->
-          </div><!--/levels-->
-        </section><!--/settings-->
       </div><!--/game-->
     </div><!--/container-->
+
+    <section class="settings">
+      <div class="stats">
+        <h2>Game stats</h2>
+        <div class="stats__holder">
+          <p>Player:<span></span></p>
+          <p>clicks:<span></span></p>
+        </div>
+      </div><!--/stats-->
+
+      <div class="player">
+        <h2>How many players?</h2>
+        <div class="player__holder">
+          <button class="button player__buttons" data-players="1">1 player</button>
+          <button class="button player__buttons" data-players="2">2 players</button>
+          <button class="button player__buttons" data-players="cpu">CPU</button>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="level">
+        <h2>Choose level</h2>
+        <div class="level__holder">
+          <button class="button level__buttons">easy</button>
+          <button class="button level__buttons">medium</button>
+          <button class="button level__buttons">hard</button>
+        </div><!--levels__holder-->
+      </div><!--/levels-->
+    </section><!--/settings-->
 
     <script src="deck.js"></script>
     <script src="main.js"></script>

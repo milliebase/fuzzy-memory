@@ -6,6 +6,10 @@ const overlayTextP = document.querySelector(".overlay__text p");
 const replay = document.querySelector(".replay");
 let chosenCards = [];
 
+let level;
+let gameDeck;
+let player;
+
 const toggleOverlay = function() {
   overlay.classList.toggle("overlay--hidden");
   setTimeout(() => {
@@ -58,24 +62,24 @@ const playGame = function() {
 
         if (availableMatches === 0) {
           overlayTextH2.textContent = "You won!";
-          overlayTextP.textContent = "";
+          overlayTextP.textContent = "Play again or choose another level";
           replay.classList.remove("replay--hidden");
-          toggleOverlay();
+          setTimeout(() => {
+            toggleOverlay();
+          }, 500);
         }
 
         chosenCards = [];
 
         setTimeout(() => {
           gameBoard.classList.remove("game__board--locked");
-        }, 800);
+        }, 950);
       }
     });
   });
 };
 
 //////////////////GENERATE GAME-BOARD////////////////////
-const levelButtons = document.querySelectorAll(".level__buttons");
-
 /**
  *Function which shuffles the deck.
 
@@ -169,12 +173,35 @@ const checkChosenLevel = function(level) {
   playGame();
 };
 
-let level;
-let gameDeck;
+///////////////////////////EVENTS////////////////////////////
+const levelButtons = document.querySelectorAll(".level__buttons");
+const playerButtons = document.querySelectorAll(".player__buttons");
+
+playerButtons.forEach(playerButton => {
+  playerButton.addEventListener("click", event => {
+    event.currentTarget.classList.add("player__buttons--active");
+
+    playerButtons.forEach(playerButton => {
+      if (playerButton !== event.currentTarget) {
+        playerButton.classList.remove("player__buttons--active");
+      }
+
+      player = event.currentTarget.dataset.player;
+    });
+  });
+});
 
 //Eventlistener for each game level
 levelButtons.forEach(levelButton => {
   levelButton.addEventListener("click", event => {
+    event.currentTarget.classList.add("level__buttons--active");
+
+    levelButtons.forEach(levelButton => {
+      if (levelButton !== event.currentTarget) {
+        levelButton.classList.remove("level__buttons--active");
+      }
+    });
+
     level = event.currentTarget.textContent;
     checkChosenLevel(level);
   });
