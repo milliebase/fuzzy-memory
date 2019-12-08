@@ -60,10 +60,21 @@ header p {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  transition: all 0.5s ease;
 }
 
+.card--locked,
 .game__board--locked {
   pointer-events: none;
+}
+
+.game__board--one {
+  transition: all 0.5s ease;
+  background-color: rgb(255, 238, 251);
+}
+
+.game__board--two {
+  background-color: rgb(236, 232, 255);
 }
 
 .overlay {
@@ -115,7 +126,7 @@ header p {
   margin: 0;
   font-size: 1.5em;
   font-weight: 700;
-  width: 80%;
+  width: 70%;
   text-align: center;
 }
 
@@ -206,19 +217,36 @@ header p {
 
 .settings h2 {
   font-size: 18px;
+  margin: 0;
+}
+
+.settings__play {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
 }
 
 .player,
-.level ,
+.level,
 .stats {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 }
 
-/**BUTTON_HOLDER**/
+.player,
+.level {
+  width: 40%;
+  height: 100%;
+}
+
+.stats {
+  width: 100%;
+}
+
 .player__holder,
 .level__holder {
   width: 100%;
@@ -230,10 +258,47 @@ header p {
 
 .stats__holder {
   width: 100%;
-  padding: 0 15%;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+}
+
+.stats__players {
+  width: 45%;
+  padding: 5%;
+  border-radius: 15px;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats__players h3,
+.stats__players h4 {
+  margin: 0;
+}
+
+.stats__players h4 {
+  font-weight: 400;
+}
+
+.stats__players--one {
+  background-color: rgb(141, 26, 64);
+}
+
+.stats__players--two {
+  background-color: rgb(28, 4, 31);
+}
+
+.stats__players--hidden {
+  display: none;
 }
 
 /**BUTTONS**/
+button:focus {
+  outline: none;
+}
+
 .player__buttons,
 .level__buttons {
   width: 100px;
@@ -242,7 +307,7 @@ header p {
   text-transform: uppercase;
   border-radius: 8px;
   border: none;
-  padding: 3%;
+  padding: 10% 8%;
   margin-bottom: 2%;
 }
 
@@ -255,6 +320,10 @@ header p {
 }
 
 .level__buttons {
+  background-color: rgb(182, 182, 182);
+}
+
+.level__buttons--clickable {
   background-color: rgb(193, 206, 149);
 }
 

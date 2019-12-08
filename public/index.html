@@ -23,7 +23,7 @@
           <div class="overlay overlay--welcome">
             <div class="overlay__text">
               <h2>Welcome</h2>
-              <p>Choose level</p>
+              <p>Choose players and level to play</p>
             </div>
             <button class="replay replay--hidden">Replay</button>
           </div>
@@ -32,32 +32,43 @@
     </div><!--/container-->
 
     <section class="settings">
+      <div class="settings__play">
+        <div class="player">
+          <h2>Choose players</h2>
+          <div class="player__holder">
+            <button class="button player__buttons" data-players="0">1 player</button>
+            <button class="button player__buttons" data-players="1">2 players</button>
+          </div><!--/player__holder-->
+        </div><!--/player-->
+
+        <div class="level">
+          <h2>Choose level</h2>
+          <div class="level__holder">
+            <button class="button level__buttons">easy</button>
+            <button class="button level__buttons">medium</button>
+            <button class="button level__buttons">hard</button>
+          </div><!--level__holder-->
+        </div><!--/level-->
+      </div><!--/settings__play-->
+
       <div class="stats">
-        <h2>Game stats</h2>
-        <div class="stats__holder">
-          <p>Player:<span></span></p>
-          <p>clicks:<span></span></p>
-        </div>
-      </div><!--/stats-->
+          <h2>Game stats</h2>
+          <div class="stats__holder">
+            <div class="stats__players stats__players--one stats__players--hidden">
+              <h3>Player:</h3>
+              <h4>1</h4>
+              <h3>points:</h3>
+              <h4>0</h4>
+            </div>
 
-      <div class="player">
-        <h2>How many players?</h2>
-        <div class="player__holder">
-          <button class="button player__buttons" data-players="1">1 player</button>
-          <button class="button player__buttons" data-players="2">2 players</button>
-          <button class="button player__buttons" data-players="cpu">CPU</button>
-        </div>
-        <div></div>
-      </div>
-
-      <div class="level">
-        <h2>Choose level</h2>
-        <div class="level__holder">
-          <button class="button level__buttons">easy</button>
-          <button class="button level__buttons">medium</button>
-          <button class="button level__buttons">hard</button>
-        </div><!--levels__holder-->
-      </div><!--/levels-->
+            <div class="stats__players stats__players--two stats__players--hidden">
+                <h3>Player:</h3>
+                <h4>2</h4>
+                <h3>points:</h3>
+                <h4>0</h4>
+            </div>
+          </div>
+        </div><!--/stats-->
     </section><!--/settings-->
 
     <script src="deck.js"></script>
