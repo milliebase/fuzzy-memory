@@ -14,7 +14,7 @@ __The assignment had to consist of:__
 ### Built With
 * HTML
 * CSS
-* JavaScrip
+* JavaScript
 
 __We were not allowed to use any other language or framework for this assignment.__
 
