@@ -6,10 +6,13 @@ const overlayTextH2 = document.querySelector(".overlay__text h2");
 const overlayTextP = document.querySelector(".overlay__text p");
 const replay = document.querySelector(".replay");
 
-//Array for choosed cards
+const overlayTurn = document.querySelector(".overlay__turn");
+const turnText = document.querySelector(".turn__text span");
+
+// Array for choosed cards
 let chosenCards = [];
 
-//Deck and level variables
+// Deck and level variables
 let level;
 let deck;
 let gameDeck;
@@ -26,13 +29,14 @@ const pointsSecondPlayer = document.querySelector(
   ".stats__players--two h4:last-of-type"
 );
 
-//Keeping track of gameplay variables
+// Variables keeping track of gameplay
 let currentTurn = "first player";
 
 let firstPlayerPoints = 0;
 let secondPlayerPoints = 0;
 
 ////////////////////GAMEPLAY///////////////////////
+
 /**
  * Function whichs toggles the game overlay
  */
@@ -59,6 +63,11 @@ const handleTurns = function(wasItAMatch) {
         gameBoard.classList.add("game__board--two");
       }, 1000);
 
+      setTimeout(() => {
+        overlayTurn.classList.remove("overlay__turn--hidden");
+        turnText.textContent = "Player TWO";
+      }, 700);
+
       currentTurn = "second player";
     }
   } else if (currentTurn === "second player") {
@@ -70,6 +79,11 @@ const handleTurns = function(wasItAMatch) {
         gameBoard.classList.remove("game__board--two");
         gameBoard.classList.add("game__board--one");
       }, 1000);
+
+      setTimeout(() => {
+        overlayTurn.classList.remove("overlay__turn--hidden");
+        turnText.textContent = "Player ONE";
+      }, 700);
 
       currentTurn = "first player";
     }
@@ -97,6 +111,11 @@ const isMatch = function(chosenCards) {
   }
 };
 
+/**
+ * Functions tells which player is the winner
+ *
+ * @param {string} numOfPlayers
+ */
 const getWinner = function(numOfPlayers) {
   if (numOfPlayers === "0") {
     overlayTextH2.textContent = "You won!";
@@ -125,7 +144,7 @@ const getWinner = function(numOfPlayers) {
 };
 
 /**
- * Function with eventlisteners for playing the game
+ * Function with eventlisteners for the cards
  */
 const playGame = function() {
   const cards = document.querySelectorAll(".card");
@@ -159,6 +178,7 @@ const playGame = function() {
         }
 
         if (availableMatches === 0) {
+          overlayTurn.classList.add("overlay__turn--hidden");
           getWinner(numOfPlayers);
         }
 

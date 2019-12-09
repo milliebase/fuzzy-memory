@@ -8,18 +8,31 @@ const header = document.querySelector("header");
 //////////////EVENTLISTENER FOR DECK__BUTTONS////////////////////
 deckButtons.forEach(deckButton => {
   deckButton.addEventListener("click", event => {
+    deckButtons.forEach(deckButton => {
+      deckButton.classList.remove("deck__buttons--mulan-active");
+      deckButton.classList.remove("deck__buttons--lion-king-active");
+    });
+
     if (deckButton.dataset.deck === "mulan") {
       deck = mulan;
+
       isLevelChosen(levelButtons);
+
       header.classList.remove("header--lion-king");
       gameBoard.classList.remove("game__board--lion-king");
+
+      deckButton.classList.add("deck__buttons--mulan-active");
     }
 
     if (deckButton.dataset.deck === "lion-king") {
       deck = lionKing;
+
       isLevelChosen(levelButtons);
+
       header.classList.add("header--lion-king");
       gameBoard.classList.add("game__board--lion-king");
+
+      deckButton.classList.add("deck__buttons--lion-king-active");
     }
 
     //////////////EVENTLISTENER FOR PLAYER__BUTTONS////////////////////

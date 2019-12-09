@@ -115,6 +115,11 @@ const initiateChosenLevel = function(level) {
   playGame();
 };
 
+/**
+ * Functions checks if a level is already chosen
+ *
+ * @param {array} levelButtons
+ */
 const isLevelChosen = function(levelButtons) {
   levelButtons.forEach(levelButton => {
     if (levelButton.classList.contains("level__buttons--active")) {
