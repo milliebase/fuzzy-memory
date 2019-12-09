@@ -42,6 +42,8 @@ deckButtons.forEach(deckButton => {
       playerButton.addEventListener("click", event => {
         chosenCards = [];
 
+        overlayTurn.classList.add("overlay__turn--hidden");
+
         numOfPlayers = event.currentTarget.dataset.players;
 
         event.currentTarget.classList.add("player__buttons--active");
