@@ -1,0 +1,60 @@
+/**CARD**/
+.card {
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: transform 1s ease;
+}
+
+/*Used when element is clicked*/
+.card--flip {
+  transform: rotateY(180deg);
+  transform-style: preserve-3d;
+}
+
+/*CARD--*level* -- DECIDES WHICH WIDTH*/
+.card--hard {
+  height: 23%;
+  width: 17%; /*WIDTH IS (100-20)/number of cards in row*/
+}
+
+.card--medium {
+  height: 23%;
+  width: 21%;
+}
+
+.card--easy {
+  height: 30%;
+  width: 22%;
+}
+
+.card__front,
+.card__back {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card__front {
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card__front--mulan {
+  background-image: url("images/svg/mulanmears.svg");
+  background-color: rgb(233, 196, 197);
+}
+
+.card__front--lion-king {
+  background-image: url("images/svg/simbamears.svg");
+  background-color: rgb(252, 223, 191);
+}
+
+.card__back {
+  object-fit: cover;
+  position: absolute;
+  transform: rotateY(180deg);
+}

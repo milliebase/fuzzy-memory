@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Fuzzy memory</title>
     <link rel="stylesheet" href="https://unpkg.com/sanitize.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="overlay.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="stylesheet" href="settings.css">
     <link href="https://fonts.googleapis.com/css?family=Caveat|Dosis:200,300,400,500,600,700,800|Rouge+Script&display=swap" rel="stylesheet"/>
   </head>
   <body>
@@ -24,10 +27,16 @@
             <div class="overlay__text">
               <h2>Welcome</h2>
               <p>Choose players and level to play</p>
-            </div>
+            </div><!--/overlay__text-->
             <button class="replay replay--hidden">Replay</button>
-          </div>
-        </section>
+          </div><!--/overlay-->
+
+          <div class="overlay__turn overlay__turn--hidden">
+              <div class="turn__text">
+                  <p><span></span> it's your turn!</p>
+                </div>
+          </div><!--/overlay__player-->
+        </section><!--/game__board-->
       </div><!--/game-->
     </div><!--/container-->
 
@@ -37,8 +46,8 @@
         <div class="deck__holder">
           <button class="deck__buttons deck__buttons--mulan" data-deck="mulan"></button>
           <button class="deck__buttons deck__buttons--lion-king" data-deck="lion-king"></button>
-        </div>
-      </div>
+        </div><!--/deck__holder-->
+      </div><!--/deck-->
 
       <div class="settings__play">
         <div class="player">
@@ -67,15 +76,15 @@
               <h4>1</h4>
               <h3>points:</h3>
               <h4>0</h4>
-            </div>
+            </div><!--/stats__players--one-->
 
             <div class="stats__players stats__players--two stats__players--hidden">
                 <h3>Player:</h3>
                 <h4>2</h4>
                 <h3>points:</h3>
                 <h4>0</h4>
-            </div>
-          </div>
+            </div><!--/stats__players--two-->
+          </div><!--/stats__holder-->
         </div><!--/stats-->
     </section><!--/settings-->
 

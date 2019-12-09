@@ -1,0 +1,98 @@
+/********OVERLAY*******/
+.overlay {
+  height: 85%;
+  width: 70%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(248, 248, 248, 0.74);
+  backdrop-filter: blur(2px);
+  color: rgb(20, 20, 82);
+  padding: 5%;
+  opacity: 1;
+}
+
+.overlay--welcome {
+  background-image: url("images/svg/mulanmears_bw.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+}
+
+.overlay--hidden {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.overlay--placement {
+  z-index: -1;
+}
+
+.overlay__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
+}
+
+.overlay__text h2 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 800;
+}
+
+.overlay__text p {
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  width: 70%;
+  text-align: center;
+}
+
+/******REPLAY-BUTTON****/
+.replay {
+  width: 30%;
+  padding: 2% 3%;
+  color: white;
+  font-family: "Dosis", sans-serif;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 800;
+  background-color: rgb(20, 20, 82);
+  border-radius: 10px;
+  border: none;
+  margin-top: 5%;
+}
+
+.replay--hidden {
+  display: none;
+}
+
+/********OVERLAY__TURN*******/
+.overlay__turn {
+  width: 70%;
+  position: fixed;
+  top: 18%;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+}
+
+.overlay__turn--hidden {
+  opacity: 0;
+  transition: opacity 1.6s ease;
+}
+
+.turn__text {
+  width: 30%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.541);
+  border-radius: 10px;
+}
+
+.turn__text span {
+  font-weight: 700;
+}
