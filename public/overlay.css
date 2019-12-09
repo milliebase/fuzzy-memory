@@ -83,7 +83,7 @@
 
 .overlay__turn--hidden {
   opacity: 0;
-  transition: opacity 1.6s ease;
+  transition: opacity 1s ease;
 }
 
 .turn__text {
