@@ -167,3 +167,7 @@ button:focus {
 .level__buttons--active {
   background-color: rgb(94, 58, 58);
 }
+
+.player__buttons--locked {
+  pointer-events: none;
+}
