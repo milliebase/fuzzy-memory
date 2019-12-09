@@ -66,7 +66,8 @@ Betsy Alva Soplin
 
 ## Tested by
 * Andreas Pandzic
-* TBA
+* Henrik Björkvall
+* Erik Johannesson
 
 ## Code reviews
 TBA
