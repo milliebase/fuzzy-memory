@@ -132,10 +132,6 @@ const isLevelChosen = function(levelButtons) {
         setTimeout(() => {
           gameBoard.classList.add("game__board--one");
         }, 100);
-
-        setTimeout(() => {
-          handleTurns();
-        }, 100);
       }
     }
   });

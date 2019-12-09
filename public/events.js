@@ -5,6 +5,12 @@ const levelButtons = document.querySelectorAll(".level__buttons");
 
 const header = document.querySelector("header");
 
+const handleFirstPlayerClick = function() {
+  overlayTurn.classList.remove("overlay__turn--hidden");
+  turnText.style.backgroundColor = "rgba(141, 26, 64, 0.608)";
+  turnTextSpan.textContent = "Player one";
+};
+
 /**
  * Callback function to handle the deck buttons eventlisteners.
  * When a deck button is clicked, it will initiate eventlisteners for player buttons.
@@ -51,6 +57,24 @@ const handleDeckButtons = function() {
  * When a player button is clicked, it will initiate eventlisteners for level buttons.
  */
 const handlePlayerButtons = function() {
+  //Prevent from being able to click twice.
+  this.classList.add("player__buttons--locked");
+
+  //Always set the first player as player one and indicate to user.
+  if (this.dataset.players === "1") {
+    currentTurn = "player one";
+
+    if (level != null) {
+      setTimeout(() => {
+        handleFirstPlayerClick();
+      }, 400);
+    } else {
+      setTimeout(() => {
+        handleFirstPlayerClick();
+      }, 1500);
+    }
+  }
+
   chosenCards = [];
 
   overlayTurn.classList.add("overlay__turn--hidden");
@@ -62,6 +86,7 @@ const handlePlayerButtons = function() {
   playerButtons.forEach(playerButton => {
     if (playerButton !== this) {
       playerButton.classList.remove("player__buttons--active");
+      playerButton.classList.remove("player__buttons--locked");
     }
 
     isLevelChosen(levelButtons);
@@ -81,10 +106,6 @@ const handlePlayerButtons = function() {
     statsSecondPlayer.classList.remove("stats__players--hidden");
 
     statsFirstPlayer.children[2].textContent = "points:";
-
-    setTimeout(() => {
-      handleTurns();
-    }, 200);
   }
 
   //Initiate clicks for level buttons.

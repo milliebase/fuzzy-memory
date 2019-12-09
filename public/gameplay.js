@@ -8,7 +8,8 @@ const overlayTextP = document.querySelector(".overlay__text p");
 const replay = document.querySelector(".replay");
 
 const overlayTurn = document.querySelector(".overlay__turn");
-const turnText = document.querySelector(".turn__text span");
+const turnText = document.querySelector(".turn__text");
+const turnTextSpan = document.querySelector(".turn__text span");
 
 // Array for choosed cards
 let chosenCards = [];
@@ -31,7 +32,7 @@ const pointsSecondPlayer = document.querySelector(
 );
 
 // Variables keeping track of gameplay
-let currentTurn = "first player";
+let currentTurn = "player one";
 
 let firstPlayerPoints = 0;
 let secondPlayerPoints = 0;
@@ -54,7 +55,7 @@ const toggleOverlay = function() {
  * @param {boolean} wasItAMatch
  */
 const handleTurns = function(wasItAMatch) {
-  if (currentTurn === "first player") {
+  if (currentTurn === "player one") {
     if (wasItAMatch) {
       firstPlayerPoints++;
       pointsFirstPlayer.textContent = firstPlayerPoints;
@@ -66,14 +67,13 @@ const handleTurns = function(wasItAMatch) {
 
       setTimeout(() => {
         overlayTurn.classList.remove("overlay__turn--hidden");
-        turnText.textContent = "Player two";
+        turnText.style.backgroundColor = "rgba(28, 4, 31, 0.608)";
+        turnTextSpan.textContent = "Player two";
       }, 700);
 
-      currentTurn = "second player";
+      currentTurn = "player two";
     }
-  }
-
-  if (currentTurn === "second player") {
+  } else if (currentTurn === "player two") {
     if (wasItAMatch) {
       secondPlayerPoints++;
 
@@ -86,10 +86,11 @@ const handleTurns = function(wasItAMatch) {
 
       setTimeout(() => {
         overlayTurn.classList.remove("overlay__turn--hidden");
-        turnText.textContent = "Player one";
+        turnText.style.backgroundColor = "rgba(141, 26, 64, 0.608)";
+        turnTextSpan.textContent = "Player one";
       }, 700);
 
-      currentTurn = "first player";
+      currentTurn = "player one";
     }
   }
 };

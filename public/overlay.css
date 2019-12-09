@@ -73,12 +73,16 @@
 
 /********OVERLAY__TURN*******/
 .overlay__turn {
-  width: 70%;
+  width: 10%;
   position: fixed;
-  top: 18%;
+  top: 3%;
+  left: 3%;
   display: flex;
   justify-content: center;
   opacity: 1;
+  background-color: rgba(255, 255, 255, 0.863);
+  border-radius: 15px;
+  padding: 5px 5px;
 }
 
 .overlay__turn--hidden {
@@ -87,9 +91,12 @@
 }
 
 .turn__text {
-  width: 30%;
+  font-size: 0.8em;
+  width: 98%;
+  padding: 0 17%;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.541);
+  color: white;
+  background-color: rgba(141, 26, 64, 0.608);
   border-radius: 10px;
 }
 
