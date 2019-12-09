@@ -65,7 +65,7 @@ const handleTurns = function(wasItAMatch) {
 
       setTimeout(() => {
         overlayTurn.classList.remove("overlay__turn--hidden");
-        turnText.textContent = "Player TWO";
+        turnText.textContent = "Player two";
       }, 700);
 
       currentTurn = "second player";
@@ -82,7 +82,7 @@ const handleTurns = function(wasItAMatch) {
 
       setTimeout(() => {
         overlayTurn.classList.remove("overlay__turn--hidden");
-        turnText.textContent = "Player ONE";
+        turnText.textContent = "Player one";
       }, 700);
 
       currentTurn = "first player";
@@ -118,7 +118,7 @@ const isMatch = function(chosenCards) {
  */
 const getWinner = function(numOfPlayers) {
   if (numOfPlayers === "0") {
-    overlayTextH2.textContent = "You won!";
+    overlayTextH2.textContent = "You made it!";
   }
 
   if (numOfPlayers === "1") {
