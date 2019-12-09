@@ -25,7 +25,7 @@ __We were not allowed to use any other language or framework for this assignment
 * Keep track of your gameplay stats while playing
 
 ## Responsive Design and compatibility
-As for now the responsive design is only made for desktop.
+As for now the design is only made for desktop.
 
 In the future I'll add media queries and maybe add even more features.
 
@@ -63,7 +63,7 @@ Betsy Alva Soplin
 9th december 2019
 
 ## Tested by
-* TBA
+* Andreas Pandzic
 * TBA
 
 ## Code reviews
