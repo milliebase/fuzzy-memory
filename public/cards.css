@@ -56,6 +56,5 @@
 .card__back {
   object-fit: cover;
   object-position: 50% 20%;
-  position: absolute;
   transform: rotateY(180deg);
 }
