@@ -34,6 +34,8 @@ __Browsers:__
 - [x] Google Chrome
 - [x] Firefox
 
+Not yet compatible with Safari
+
 ## Installation
 
 1. To be able to play this game, clone this repository to your directory through the terminal.
