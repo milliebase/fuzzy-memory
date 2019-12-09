@@ -1,3 +1,4 @@
+//Variable for the gameboard
 const gameBoard = document.querySelector(".game__board");
 
 // Overlay variables
@@ -53,7 +54,7 @@ const toggleOverlay = function() {
  * @param {boolean} wasItAMatch
  */
 const handleTurns = function(wasItAMatch) {
-  if (numOfPlayers === "1" && currentTurn === "first player") {
+  if (currentTurn === "first player") {
     if (wasItAMatch) {
       firstPlayerPoints++;
       pointsFirstPlayer.textContent = firstPlayerPoints;
@@ -70,9 +71,12 @@ const handleTurns = function(wasItAMatch) {
 
       currentTurn = "second player";
     }
-  } else if (currentTurn === "second player") {
+  }
+
+  if (currentTurn === "second player") {
     if (wasItAMatch) {
       secondPlayerPoints++;
+
       pointsSecondPlayer.textContent = secondPlayerPoints;
     } else {
       setTimeout(() => {
@@ -182,6 +186,7 @@ const playGame = function() {
           getWinner(numOfPlayers);
         }
 
+        //Reset the array with chosen cards
         chosenCards = [];
 
         setTimeout(() => {
