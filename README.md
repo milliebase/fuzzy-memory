@@ -71,7 +71,7 @@ Betsy Alva Soplin
 
 ## Code review
 - [ ] `generate.js:35` - you could maybe add the data-name attribute and its value in the template literal on line 37.
-- [x]`gameplay.js:1` - you could add a comment to the gameBoard variable to follow the otherwise excellent structure of defining variables and commenting what they are and what they are for.
+- [x] `gameplay.js:1` - you could add a comment to the gameBoard variable to follow the otherwise excellent structure of defining variables and commenting what they are and what they are for.
 - [x] `events.js:9-36` - maybe you could break out the code blocks in the if-statements and make a function instead and call the function to increase readability.
 - [x] `events.js:9-103` - it’s quite difficult to follow the code due to the deep nesting. It might be good to break out code where it’s possible to increase readability here.
 - [ ] `events.js:106` - you have an event listener on a variable that’s defined in another js-file (gameplay.js: 7). Maybe you could write the event listener in gameplay.js instead?
