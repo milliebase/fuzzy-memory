@@ -19,8 +19,8 @@
 }
 
 .card--medium {
-  height: 23%;
-  width: 21%;
+  height: 24%;
+  width: 20.5%;
 }
 
 .card--easy {
@@ -55,6 +55,7 @@
 
 .card__back {
   object-fit: cover;
+  object-position: 50% 20%;
   position: absolute;
   transform: rotateY(180deg);
 }
