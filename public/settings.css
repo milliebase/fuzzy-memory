@@ -154,7 +154,7 @@ button:focus {
   text-transform: uppercase;
   border-radius: 8px;
   border: none;
-  padding: 10% 8%;
+  padding: 10% 6%;
   margin-bottom: 2%;
   background-color: rgb(182, 182, 182);
 }
